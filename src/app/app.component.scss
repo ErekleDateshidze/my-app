@@ -1,0 +1,30 @@
+.nav {
+    gap: 10px ;
+}
+.red {
+    background-color: rgb(201, 187, 187);
+}
+.blue {
+    background-color: rgb(158, 158, 180);
+}
+
+.item {
+    color: black ;
+    padding: 10px;
+}
+
+ul{
+    margin:0;
+    padding: 0;
+}
+
+li{
+    width:150px
+
+}
+
+.error {
+    color: black;
+    background-color: red;
+    padding: 5px;
+}

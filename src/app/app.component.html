@@ -1,7 +1,7 @@
 <div class="todo-app">
   <div class="nav">
     <input type="text" [(ngModel)]="taskName" placeholder="Enter Task" />
-    <select name="" id="difficulty">
+    <select [(ngModel)]="diff" name="" id="difficulty">
       <option value="" selected>Select</option>
       <option *ngFor="let option of options" value="{{ option }}">
         {{ option }}
@@ -20,13 +20,21 @@
         *ngFor="let task of tasks; let i = index"
       >
         <button (click)="deleteItem(i)">X</button>
-        <button (click)="moveToProgress(i)"></button>
-        <span *ngIf="showNumber(i)">{{ i + 1 }}.</span> {{ task }}
+        <span *ngIf="showNumber(i)">{{ i + 1 }}.</span> {{ task.taskName }}
+        <span>{{ task.difficulty }}</span>
+        <button id="move" (click)="moveToProgress(i)">></button>
       </li>
     </ul>
 
     <ul class="in-progress"></ul>
-
+    <li
+      class="in-progress"
+      [ngClass]="getItemClass(i + 1)"
+      *ngFor="let taskinprogress of tasksinprogress; let i = index"
+    >
+      <span>{{ taskinprogress.taskName }}</span>
+      <span>{{ taskinprogress.difficulty }}</span>
+    </li>
     <ul class="done"></ul>
   </div>
   <!-- /////////// -->

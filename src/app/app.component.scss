@@ -1,3 +1,8 @@
+.todo{
+    display: flex;
+    flex-direction: row;
+}
+
 .nav {
     gap: 10px ;
 }
@@ -13,7 +18,7 @@
     padding: 10px;
 }
 
-ul{
+.todo{
     margin:0;
     padding: 0;
 }
@@ -27,4 +32,11 @@ li{
     color: black;
     background-color: red;
     padding: 5px;
+}
+
+
+nav .inprogress{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

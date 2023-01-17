@@ -5,35 +5,23 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-
-// interface inputSelect {
-//   taskName:string;
-//   selectValue:string;
-// }
-
-// interface lists {
-//   state:string;
- 
-// }
-
-
 export class AppComponent {
-  tasks:string[]=[];
+  tasks:any[]=[];
+  tasksinprogress:any[]=[]
+  done:any[]=[]
   taskName :string=''
   error=''
   options = [ ' Easy' , 'Medium' , 'Hard'];
   selectedValue:string='';
 
-  
-
-
+  diff = ''
 
   addTask() {
     if(!this.taskName) {
       this.error= 'Empty Input'
       return
     }
-    this.tasks.push(this.taskName);
+    this.tasks.push({taskName:this.taskName , difficulty : this.diff} );
     this.taskName='';
     this.error=''
   }
@@ -56,8 +44,9 @@ export class AppComponent {
     this.tasks.splice(index,1);
   }
 
-  moveToProgress(index :number) {
-    
+  moveToProgress(index :number) { 
+    this.tasksinprogress.push(this.tasks[index])
+    this.tasks= this.tasks.filter((_,i) => i !==index)
   }
 
 }

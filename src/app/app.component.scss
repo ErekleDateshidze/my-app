@@ -1,10 +1,22 @@
-.todo{
-    display: flex;
-    flex-direction: row;
+* {
+    list-style: none;
 }
 
+.list {
+    display: flex;
+    flex-direction: row;
+    gap: 0.1rem;
+}
+
+// .to-do {
+//     border: solid;
+//     width: 10rem;
+//     height: 30rem;
+// }
+
+
 .nav {
-    gap: 10px ;
+ margin-left: 5px;
 }
 .red {
     background-color: rgb(201, 187, 187);
@@ -18,14 +30,31 @@
     padding: 10px;
 }
 
+.in-progress {
+    padding: 10px;
+}
+
+.done {
+    display: flex;
+    color: black;
+    padding: 10px;
+}
+
 .todo{
     margin:0;
     padding: 0;
 }
 
 li{
-    width:150px
+    width:150px;
+    border-radius: 5px;
+}
 
+.arrow {
+    background-color: rgb(87, 77, 77);
+    color: black;
+    border-radius: 5px;
+    margin-left: 1px;
 }
 
 .error {
@@ -35,8 +64,3 @@ li{
 }
 
 
-nav .inprogress{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}

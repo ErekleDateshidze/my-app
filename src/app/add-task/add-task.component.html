@@ -1,0 +1,16 @@
+<div class="nav">
+  <input
+    class="inpt"
+    type="text"
+    [(ngModel)]="taskName"
+    placeholder="Enter Task"
+  />
+  <select [(ngModel)]="diff" name="" id="difficulty">
+    <option value="" selected>Select</option>
+    <option *ngFor="let option of options" value="{{ option }}">
+      {{ option }}
+    </option>
+  </select>
+  <button (click)="addTask()">Add Task</button>
+  <div class="error" *ngIf="error">{{ error }}</div>
+</div>

@@ -1,6 +1,12 @@
 <div class="todo-app">
+  <app-add-task></app-add-task>
   <div class="nav">
-    <input type="text" [(ngModel)]="taskName" placeholder="Enter Task" />
+    <input
+      class="inpt"
+      type="text"
+      [(ngModel)]="taskName"
+      placeholder="Enter Task"
+    />
     <select [(ngModel)]="diff" name="" id="difficulty">
       <option value="" selected>Select</option>
       <option *ngFor="let option of options" value="{{ option }}">
@@ -12,30 +18,48 @@
   </div>
 
   <div class="list" id="to-dos">
-    <h2>To Do</h2>
     <ul class="to-do">
+      <h2>To Do</h2>
       <li
         class="item"
         [ngClass]="getItemClass(i + 1)"
         *ngFor="let task of tasks; let i = index"
       >
-        <button (click)="deleteItem(i)">X</button>
         <span *ngIf="showNumber(i)">{{ i + 1 }}.</span> {{ task.taskName }}
         <span>{{ task.difficulty }}</span>
-        <button id="move" (click)="moveToProgress(i)">></button>
+        <button (click)="deleteItem(i)">X</button>
+        <button class="arrow" id="move" (click)="moveToProgress(i)">></button>
       </li>
     </ul>
 
-    <ul class="in-progress"></ul>
-    <li
-      class="in-progress"
-      [ngClass]="getItemClass(i + 1)"
-      *ngFor="let taskinprogress of tasksinprogress; let i = index"
-    >
-      <span>{{ taskinprogress.taskName }}</span>
-      <span>{{ taskinprogress.difficulty }}</span>
-    </li>
-    <ul class="done"></ul>
+    <ul class="in-progress-main">
+      <h2>In Progress</h2>
+      <li
+        class="in-progress"
+        [ngClass]="getItemClass(i + 1)"
+        *ngFor="let taskinprogress of tasksinprogress; let i = index"
+      >
+        <span>{{ taskinprogress.taskName }}</span>
+        <span>{{ taskinprogress.difficulty }}</span>
+        <button class="back" id="move" (click)="moveBackToDo(i)">Back</button>
+        <button class="arrow" id="move" (click)="moveToDone(i)">></button>
+      </li>
+    </ul>
+
+    <ul class="done-main">
+      <h2>Done</h2>
+      <li
+        class="done"
+        [ngClass]="getItemClass(i + 1)"
+        *ngFor="let taskdone of tasksdone; let i = index"
+      >
+        <span>{{ tasksdone.taskName }}</span>
+        <span>{{ tasksdone.difficulty }}</span>
+        <button class="back" id="move" (click)="moveBackToInProgress(i)">
+          Back
+        </button>
+      </li>
+    </ul>
   </div>
   <!-- /////////// -->
 </div>

@@ -1,20 +1,24 @@
 import { Component } from '@angular/core';
 
+interface toDo {
+  taskName:string,
+  difficulty:string
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  tasks:any[]=[];
-  tasksinprogress:any[]=[]
-  done:any[]=[]
+  tasks:toDo[]=[];
+  tasksinprogress:toDo[]=[]
+  tasksdone:any=[]
   taskName :string=''
   error=''
   options = [ ' Easy' , 'Medium' , 'Hard'];
   selectedValue:string='';
-
-  diff = ''
+  diff :string= ''
 
   addTask() {
     if(!this.taskName) {
@@ -47,6 +51,21 @@ export class AppComponent {
   moveToProgress(index :number) { 
     this.tasksinprogress.push(this.tasks[index])
     this.tasks= this.tasks.filter((_,i) => i !==index)
+  }
+
+  moveToDone (index:number){
+    this.tasksdone.push(this.tasksinprogress[index])
+    this.tasksinprogress= this.tasksinprogress.filter((_,i) => i !==index)
+  }
+
+   moveBackToDo(index:number) {
+    this.tasks.push(this.tasksinprogress[index])
+    this.tasksinprogress= this.tasks.filter((_,i) => i !==index)
+  }
+
+  moveBackToInProgress(index:number) {
+    this.tasksinprogress.push(this.tasksdone[index])
+    this.tasksdone= this.tasks.filter((_,i) => i !==index)
   }
 
 }
